@@ -21,7 +21,7 @@ class BuildExtension(setuptools.command.build_ext.build_ext):
     def build_extensions(self):
         #add these two lines for OSX
         extra_compile_args=["-O3", "-stdlib=libc++"],
-        extra_link_args=["-stdlib=libc++"])]
+        extra_link_args=["-stdlib=libc++"]
         
         numpy_includes = pkg_resources.resource_filename("numpy", "core/include")
 
