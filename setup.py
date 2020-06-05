@@ -19,9 +19,9 @@ except ImportError:
 class BuildExtension(setuptools.command.build_ext.build_ext):
     
     def build_extensions(self):
-        #add these two lines for OSX
-        extra_compile_args=["-O3", "-stdlib=libc++"],
-        extra_link_args=["-stdlib=libc++"],
+        #uncomment these two lines to run using xcode > 9
+        #extra_compile_args=["-O3", "-stdlib=libc++"],
+        #extra_link_args=["-stdlib=libc++"],
         
         numpy_includes = pkg_resources.resource_filename("numpy", "core/include")
 
@@ -38,9 +38,9 @@ class BuildExtension(setuptools.command.build_ext.build_ext):
 
 
 class Test(setuptools.command.test.test):
-    #add these two lines for OSX
-    extra_compile_args=["-O3", "-stdlib=libc++"],
-    extra_link_args=["-stdlib=libc++"],
+    #uncomment these two lines to run using xcode > 9
+    #extra_compile_args=["-O3", "-stdlib=libc++"],
+    #extra_link_args=["-stdlib=libc++"],
     
     user_options = [("pytest-args=", "a", "Arguments to pass to py.test")]
 
@@ -73,9 +73,9 @@ else:
 
 __extensions = [
     setuptools.Extension(
-        #add these two lines for OSX
-        extra_compile_args=["-O3", "-stdlib=libc++"],
-        extra_link_args=["-stdlib=libc++"],
+        #uncomment these two lines to run using xcode > 9
+        #extra_compile_args=["-O3", "-stdlib=libc++"],
+        #extra_link_args=["-stdlib=libc++"],
         
         name="centrosome._propagate",
         sources=[
@@ -92,9 +92,9 @@ for pyxfile in glob.glob(os.path.join("centrosome", "*.pyx")):
 
     __extensions += [
         setuptools.Extension(
-            #add these two lines for OSX
-            extra_compile_args=["-O3", "-stdlib=libc++"],
-            extra_link_args=["-stdlib=libc++"],
+            #uncomment these two lines to run using xcode > 9
+            #extra_compile_args=["-O3", "-stdlib=libc++"],
+            #extra_link_args=["-stdlib=libc++"],
             
             name="centrosome.{}".format(name),
             sources=["centrosome/{}.{}".format(name, __suffix)],
