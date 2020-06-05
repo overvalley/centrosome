@@ -20,8 +20,8 @@ class BuildExtension(setuptools.command.build_ext.build_ext):
     
     def build_extensions(self):
         #uncomment these two lines to run using xcode > 9
-        extra_compile_args=["-O3", "-stdlib=libc++"],
-        extra_link_args=["-stdlib=libc++"],
+        #extra_compile_args=["-O3", "-stdlib=libc++"],
+        #extra_link_args=["-stdlib=libc++"],
         
         numpy_includes = pkg_resources.resource_filename("numpy", "core/include")
 
@@ -39,8 +39,8 @@ class BuildExtension(setuptools.command.build_ext.build_ext):
 
 class Test(setuptools.command.test.test):
     #uncomment these two lines to run using xcode > 9
-    extra_compile_args=["-O3", "-stdlib=libc++"],
-    extra_link_args=["-stdlib=libc++"],
+    #extra_compile_args=["-O3", "-stdlib=libc++"],
+    #extra_link_args=["-stdlib=libc++"],
     
     user_options = [("pytest-args=", "a", "Arguments to pass to py.test")]
 
