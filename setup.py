@@ -38,6 +38,10 @@ class BuildExtension(setuptools.command.build_ext.build_ext):
 
 
 class Test(setuptools.command.test.test):
+    #add these two lines for OSX
+    extra_compile_args=["-O3", "-stdlib=libc++"],
+    extra_link_args=["-stdlib=libc++"]
+    
     user_options = [("pytest-args=", "a", "Arguments to pass to py.test")]
 
     def initialize_options(self):
@@ -69,6 +73,10 @@ else:
 
 __extensions = [
     setuptools.Extension(
+        #add these two lines for OSX
+        extra_compile_args=["-O3", "-stdlib=libc++"],
+        extra_link_args=["-stdlib=libc++"]
+        
         name="centrosome._propagate",
         sources=[
             "centrosome/_propagate.{}".format("c" if __suffix == "cpp" else __suffix)
@@ -84,6 +92,10 @@ for pyxfile in glob.glob(os.path.join("centrosome", "*.pyx")):
 
     __extensions += [
         setuptools.Extension(
+            #add these two lines for OSX
+            extra_compile_args=["-O3", "-stdlib=libc++"],
+            extra_link_args=["-stdlib=libc++"]
+            
             name="centrosome.{}".format(name),
             sources=["centrosome/{}.{}".format(name, __suffix)],
             **__extkwargs
