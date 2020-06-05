@@ -17,7 +17,7 @@ except ImportError:
 
 
 class BuildExtension(setuptools.command.build_ext.build_ext):
-    extra_link_args=["-stdlib=libc++", "-mmacosx-version-min=10.9"]
+    
     def build_extensions(self):
         numpy_includes = pkg_resources.resource_filename("numpy", "core/include")
 
